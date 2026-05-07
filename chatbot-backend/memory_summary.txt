@@ -1,0 +1,7 @@
+*   User's name: Sajjad
+*   Learning API.
+*   Currently interacting via terminal.
+*   Experienced "quota reached" error with Flash 2.5 version.
+*   Switched to Gemini 3.1 Flash Lite version.
+*   Using a `.env` file to store API keys.
+*   Interested in models with the most generous API free tier (Gemini 1.5 Flash recommended).
