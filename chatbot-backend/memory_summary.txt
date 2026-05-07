@@ -5,3 +5,5 @@
 *   Switched to Gemini 3.1 Flash Lite version.
 *   Using a `.env` file to store API keys.
 *   Interested in models with the most generous API free tier (Gemini 1.5 Flash recommended).
+*   Previously discussed implementing `try-except` blocks for error handling in Python to manage API rate limits.
+*   User acknowledged previous suggestion and indicated readiness to proceed or is currently working on the project.
