@@ -11,6 +11,8 @@ if not api_key:
 
 client = genai.Client(api_key=api_key)
 
+conversation_history = []
+
 print("SoyShi Chatbot is ready!")
 print("Type 'exit', 'quit', or 'bye' to stop.\n")
 
@@ -22,12 +24,28 @@ while True:
             print("SoyShi: Goodbye!")
             break
 
+        conversation_history.append(f"User: {user_message}")
+
+        full_prompt = f"""
+You are SoyShi, a friendly and helpful AI chatbot.
+You explain things clearly and simply.
+
+Conversation history:
+{chr(10).join(conversation_history)}
+
+Now reply to the latest user message as SoyShi.
+"""
+
         response = client.models.generate_content(
             model="gemini-2.5-flash",
-            contents=user_message
+            contents=full_prompt
         )
 
-        print("\nSoyShi:", response.text)
+        bot_reply = response.text
+
+        conversation_history.append(f"SoyShi: {bot_reply}")
+
+        print("\nSoyShi:", bot_reply)
         print()
 
     except KeyboardInterrupt:
