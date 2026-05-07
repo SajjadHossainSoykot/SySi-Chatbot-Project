@@ -2,32 +2,39 @@ import os
 from dotenv import load_dotenv
 from google import genai
 
-# Load environment variables from .env
 load_dotenv()
 
-# Read Gemini API key
 api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("GEMINI_API_KEY not found. Please add it to your .env file.")
 
-# Create Gemini client
 client = genai.Client(api_key=api_key)
 
 print("SoyShi Chatbot is ready!")
 print("Type 'exit', 'quit', or 'bye' to stop.\n")
 
 while True:
-    user_message = input("You: ")
+    try:
+        user_message = input("You: ")
 
-    if user_message.lower() in ["exit", "quit", "bye"]:
-        print("SoyShi: Goodbye!")
+        if user_message.lower() in ["exit", "quit", "bye"]:
+            print("SoyShi: Goodbye!")
+            break
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=user_message
+        )
+
+        print("\nSoyShi:", response.text)
+        print()
+
+    except KeyboardInterrupt:
+        print("\nSoyShi: Chat stopped by user. Goodbye!")
         break
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=user_message
-    )
-
-    print("\nSoyShi:", response.text)
-    print()
+    except Exception as error:
+        print("\nSoyShi: Something went wrong.")
+        print("Error:", error)
+        print()
