@@ -1,9 +1,15 @@
-*   User's name: Sajjad
-*   Learning API.
-*   Currently interacting via terminal.
-*   Experienced "quota reached" error with Flash 2.5 version.
-*   Switched to Gemini 3.1 Flash Lite version.
-*   Using a `.env` file to store API keys.
-*   Interested in models with the most generous API free tier (Gemini 1.5 Flash recommended).
-*   Previously discussed implementing `try-except` blocks for error handling in Python to manage API rate limits.
-*   User acknowledged previous suggestion and indicated readiness to proceed or is currently working on the project.
+Updated memory summary for SySi:
+
+*   **User:** Sajjad.
+*   **Project Status:** 
+    *   API integration and Python code design completed.
+    *   Project repository published on GitHub (https://github.com/SajjadHossainSoykot/Chatbot-Project).
+    *   Refactored codebase: `main.py` has been broken down into multiple specialized modules for better organization and scalability.
+*   **Technical Context:**
+    *   Interacting via terminal.
+    *   Uses `.env` file for API key security.
+    *   Switched to Gemini 3.1 Flash Lite after encountering "quota reached" errors.
+*   **Learning/Development Goals:**
+    *   Focusing on professional code structure and architecture.
+    *   Interested in error handling (using `try-except` blocks for rate limits).
+    *   Future considerations: Adding a GUI, persistent conversation history, or database integration.
