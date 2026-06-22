@@ -2,16 +2,15 @@ Updated memory summary for SySi:
 
 *   **User:** Sajjad.
 *   **Social Connections:** 
-    *   Friends with Julfikar, who is currently planning a wedding on Saint Martin's Island.
+    *   Friends with Julfikar (planning a wedding on Saint Martin's Island).
 *   **Project Status:** 
-    *   API integration and Python code design completed.
-    *   Project repository published on GitHub (https://github.com/SajjadHossainSoykot/Chatbot-Project).
-    *   Refactored codebase: `main.py` broken down into multiple specialized modules for scalability.
+    *   API integration and modular Python code design (split from `main.py`) completed.
+    *   Repository: https://github.com/SajjadHossainSoykot/Chatbot-Project
+    *   **Current focus:** Preparing the project for LinkedIn portfolio and drafting the `README.md`.
+    *   **Documentation strategy:** Capturing CLI screenshots of interactions with SySi to include in the repository.
 *   **Technical Context:**
     *   Interacting via terminal.
-    *   Uses `.env` file for API key security.
-    *   Switched to Gemini 3.1 Flash Lite to manage quota limitations.
+    *   Uses `.env` for security; switched to Gemini 3.1 Flash Lite to manage quota.
 *   **Learning/Development Goals:**
-    *   Focusing on professional code structure and architecture.
-    *   Implementing robust error handling (e.g., `try-except` blocks for rate limits).
-    *   Future considerations: GUI development, persistent conversation history, and database integration.
+    *   Focusing on professional architecture, scalability, and robust error handling.
+    *   Future: GUI development, persistent conversation history, and database integration.

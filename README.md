@@ -35,6 +35,11 @@ The project was first developed in a single Python file. As the code became larg
   <img src="Screenshots/SySiChatbot3.png" alt="SySi Chatbot ASCII Art" width="100%">
 </p>
 
+<p align="center">
+  <img src="Screenshots/SySiChatbot4.png" alt="SySi Chatbot ASCII Art" width="100%">
+</p>
+
+
 ---
 
 
