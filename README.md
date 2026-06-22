@@ -9,7 +9,7 @@ This project is being developed as a personal backend learning session to unders
 ## 🔗 Repository
 
 GitHub Repository:  
-https://github.com/SajjadHossainSoykot/chatbot-project
+https://github.com/SajjadHossainSoykot/SySi-Chatbot-Project
 
 ---
 
@@ -106,7 +106,7 @@ The learning session mainly focuses on:
 
 The backend should be organized using multiple files so that each file has one clear responsibility.
 
-    chatbot-project/
+    SySi-Chatbot-Project/
     |
     ├── chatbot-backend/
     |   ├── main.py
@@ -401,11 +401,11 @@ Example memory summary:
 
 Clone the repository:
 
-    git clone https://github.com/SajjadHossainSoykot/chatbot-project.git
+    git clone https://github.com/SajjadHossainSoykot/SySi-Chatbot-Project.git
 
 Go to the backend directory:
 
-    cd chatbot-project/chatbot-backend
+    cd SySi-Chatbot-Project/chatbot-backend
 
 Create a virtual environment:
 
@@ -447,7 +447,7 @@ The chatbot can be started using:
 
 Example local command:
 
-    python3 -u "/Users/macbookair/Desktop/Disk Projects/Projects/chatbot-project/chatbot-backend/main.py"
+    python3 -u "/Users/macbookair/Desktop/Disk Projects/Projects/SySi-Chatbot-Project/chatbot-backend/main.py"
 
 ---
 
@@ -759,7 +759,7 @@ GitHub:
 https://github.com/SajjadHossainSoykot
 
 Project Repository:  
-https://github.com/SajjadHossainSoykot/chatbot-project
+https://github.com/SajjadHossainSoykot/SySi-Chatbot-Project
 
 ---
 
