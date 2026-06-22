@@ -23,7 +23,17 @@ Currently, the project runs as a command-line chatbot where the user can type me
 
 The project was first developed in a single Python file. As the code became larger, the backend logic was planned to be separated into multiple files following a cleaner and more professional structure.
 
+<p align="center">
+  <img src="Screenshots/SySiChatbot.png" alt="SySi Chatbot Overview" width="100%">
+</p>
+
+<p align="center">
+  <img src="Screenshots/SySiChatbot2.png" alt="SySi Chatbot Conversation" width="49%">
+  <img src="Screenshots/SySiChatbot3.png" alt="SySi Chatbot ASCII Art" width="49%">
+</p>
+
 ---
+
 
 ## 🎯 Main Purpose
 
