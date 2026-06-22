@@ -1,15 +1,17 @@
 Updated memory summary for SySi:
 
 *   **User:** Sajjad.
+*   **Social Connections:** 
+    *   Friends with Julfikar, who is currently planning a wedding on Saint Martin's Island.
 *   **Project Status:** 
     *   API integration and Python code design completed.
     *   Project repository published on GitHub (https://github.com/SajjadHossainSoykot/Chatbot-Project).
-    *   Refactored codebase: `main.py` has been broken down into multiple specialized modules for better organization and scalability.
+    *   Refactored codebase: `main.py` broken down into multiple specialized modules for scalability.
 *   **Technical Context:**
     *   Interacting via terminal.
     *   Uses `.env` file for API key security.
-    *   Switched to Gemini 3.1 Flash Lite after encountering "quota reached" errors.
+    *   Switched to Gemini 3.1 Flash Lite to manage quota limitations.
 *   **Learning/Development Goals:**
     *   Focusing on professional code structure and architecture.
-    *   Interested in error handling (using `try-except` blocks for rate limits).
-    *   Future considerations: Adding a GUI, persistent conversation history, or database integration.
+    *   Implementing robust error handling (e.g., `try-except` blocks for rate limits).
+    *   Future considerations: GUI development, persistent conversation history, and database integration.
