@@ -628,24 +628,15 @@ Example:
 
 ## 📌 Future Development Plan
 
-Planned improvements include:
+Planned future improvements and features include:
 
-- Split large `main.py` into multiple files
-- Improve API connection stability
-- Add better model selection
-- Add better error messages
-- Improve memory summary quality
-- Add separate configuration file
-- Add frontend interface later
-- Add FastAPI backend routes
-- Add user authentication in future
-- Add database-based chat history
-- Add web-based chatbot UI
-- Add deployment support
-- Add better logging and debugging
-- Add better documentation
-- Add testing for backend functions
-- Add better command handling system
+- **FastAPI Integration**: Transition the CLI backend into a web API server using FastAPI.
+- **Web-Based Chatbot UI**: Create a clean and modern web-based frontend interface.
+- **Database Storage**: Move from file-based JSON storage to a database (e.g., SQLite or PostgreSQL) for robust chat history and memory management.
+- **User Authentication**: Implement user sign-up, login, and session tracking.
+- **Comprehensive Testing**: Write unit and integration tests for all backend modules.
+- **Advanced Logging & Debugging**: Add structured logging for monitoring API calls and system errors.
+- **Dockerization & Deployment**: Set up containerization (Docker) and deployment configurations for cloud platforms.
 
 ---
 
