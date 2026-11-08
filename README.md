@@ -257,24 +257,38 @@ When the chatbot starts, the user can use normal messages or special commands.
 
 | Command | Function |
 |---|---|
-| exit | Stop the chatbot |
-| quit | Stop the chatbot |
-| bye | Stop the chatbot |
-| clear | Delete saved chat history and memory summary |
-| history | Show full saved chat history |
-| recent | Show recent memory sent to the AI |
-| summary | Show long-term memory summary |
+| help / ? | Display the command reference guide |
+| models | View the active fallback model pipeline and their priorities |
+| status | Display session statistics (messages count, models used) |
+| history | Show full saved chat history with model names and timestamps |
+| recent | Show recent memory currently in the AI context window |
+| summary | Show persistent long-term memory summary |
+| clear | Delete saved chat history and long-term memory summary |
+| exit / quit / bye | Stop and exit the chatbot session safely |
 
 ---
 
 ## 💬 Example Terminal Output
 
-    SySi Chatbot is ready!
-    Type 'exit', 'quit', or 'bye' to stop.
-    Type 'clear' to delete chat history and memory summary.
-    Type 'history' to see full saved chat history.
-    Type 'recent' to see recent memory sent to AI.
-    Type 'summary' to see long-term memory summary.
+    ==================================================
+            🤖 SySi Chatbot Backend is Ready!        
+    ==================================================
+      Type 'help' to see all available commands.
+      Type 'models' to see active fallback models.
+      Type 'exit', 'quit', or 'bye' to stop.
+
+    You: models
+
+    ==================== Active Fallback Model Pipeline ====================
+      1. gemini-3.1-flash-lite      [Primary Model]
+      2. gemini-3.8-flash           [Fallback #1]
+      3. gemini-3.5-flash           [Fallback #2]
+      4. gemini-2.5-flash           [Fallback #3]
+      5. gemini-2.5-flash-lite      [Fallback #4]
+      6. gemma-3-27b-it             [Fallback #5]
+      7. gemma-3-12b-it             [Fallback #6]
+      8. gemma-3-4b-it              [Fallback #7]
+    ========================================================================
 
     You: Hi
 
@@ -317,15 +331,36 @@ If an API key is exposed, delete it immediately and create a new one from the AP
 
 ## 🔁 Model Fallback System
 
-The chatbot is designed to try multiple models if one model is unavailable, busy, quota-limited, or not allowed for the current API key.
+The chatbot is designed with an automatic model fallback pipeline. If a model encounters a quota limit (`429`), temporary server downtime (`503`/`500`), timeout (`504`), permission restriction (`403`), or discontinuation (`404`), it automatically retries with the next available model in the configured pipeline without dropping the user's session.
 
-Example fallback behavior:
+### 🔄 Active Model Pipeline
 
-    SySi: main model quota reached. Trying fallback model...
-    SySi: fallback model is busy. Trying another model...
-    SySi: another fallback model is not available. Trying next available model...
+| Priority | Model Name | Role & Architecture |
+|---|---|---|
+| **Primary** | `gemini-3.1-flash-lite` | Ultra-fast, low-latency, and quota-friendly model for high-frequency chat |
+| **Fallback #1** | `gemini-3.8-flash` | Latest premier Flash model with state-of-the-art reasoning and coding |
+| **Fallback #2** | `gemini-3.5-flash` | High-speed multimodal workhorse for agentic reasoning |
+| **Fallback #3** | `gemini-2.5-flash` | Reliable standard production fallback |
+| **Fallback #4** | `gemini-2.5-flash-lite` | Lightweight secondary fallback |
+| **Fallback #5** | `gemma-3-27b-it` | Google open-weights instruction-tuned multimodal model (27B) |
+| **Fallback #6** | `gemma-3-12b-it` | Google open-weights instruction-tuned multimodal model (12B) |
+| **Fallback #7** | `gemma-3-4b-it` | Google open-weights instruction-tuned lightweight model (4B) |
 
-This helps the chatbot continue working even if the preferred model is unavailable.
+### ⚠️ Discontinued Models Replaced
+
+Google officially shut down and discontinued older Gemini 1.5 models:
+- **`gemini-1.5-flash`** (discontinued / shut down)
+- **`gemini-1.5-flash-8b`** (discontinued / shut down)
+
+Calling discontinued model endpoints now returns a `404 NOT_FOUND` error. They have been replaced in the fallback list with Google's active **Gemini 3** series (`gemini-3.8-flash` and `gemini-3.5-flash`), and Gemma models have been updated to their official instruction-tuned chat identifiers (`gemma-3-*-it`).
+
+### Example fallback behavior:
+
+    SySi: gemini-3.1-flash-lite quota reached. Trying gemini-3.8-flash...
+    SySi: gemini-3.8-flash is busy or temporarily unavailable. Trying gemini-3.5-flash...
+    SySi: gemini-3.5-flash is discontinued or not found. Trying gemini-2.5-flash...
+
+This ensures high availability, preventing chat interruptions even during provider outages, rate limits, or API updates.
 
 ---
 

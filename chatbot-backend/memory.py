@@ -4,19 +4,38 @@ from gemini_client import generate_reply_with_fallback
 
 
 def load_memory_summary():
+    """Load the long-term memory summary from disk."""
     if not os.path.exists(SUMMARY_FILE):
         return ""
 
-    with open(SUMMARY_FILE, "r", encoding="utf-8") as file:
-        return file.read().strip()
+    try:
+        with open(SUMMARY_FILE, "r", encoding="utf-8") as file:
+            return file.read().strip()
+    except OSError:
+        return ""
 
 
 def save_memory_summary(summary):
-    with open(SUMMARY_FILE, "w", encoding="utf-8") as file:
+    """
+    Save the memory summary atomically to prevent corruption
+    if interrupted mid-write.
+    """
+    temp_file = f"{SUMMARY_FILE}.tmp"
+    with open(temp_file, "w", encoding="utf-8") as file:
         file.write(summary.strip())
+    os.replace(temp_file, SUMMARY_FILE)
+
+
+def clear_memory_summary():
+    """Clear the memory summary file."""
+    save_memory_summary("")
 
 
 def summarize_old_history(history, existing_summary):
+    """
+    When history grows past SUMMARY_TRIGGER_MESSAGES, summarize the older messages
+    and append them to the long-term memory summary, leaving recent messages intact.
+    """
     if len(history) <= SUMMARY_TRIGGER_MESSAGES:
         return history
 
@@ -24,7 +43,6 @@ def summarize_old_history(history, existing_summary):
     recent_messages = history[-MAX_RECENT_MESSAGES:]
 
     old_conversation_text = ""
-
     for message in old_messages:
         role = message.get("role", "Unknown")
         content = message.get("content", "")
@@ -57,9 +75,13 @@ Rules:
             show_fallback_messages=False
         )
 
-        save_memory_summary(updated_summary)
+        # Protect against empty or invalid responses overwriting existing memory
+        if updated_summary and updated_summary.strip():
+            save_memory_summary(updated_summary)
+            return recent_messages
 
-        return recent_messages
+        return history
 
     except Exception:
+        # If summarization fails, keep history intact to avoid data loss
         return history
